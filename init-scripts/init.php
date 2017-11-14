@@ -1,9 +1,6 @@
 <?php
   // CMS Initializer
   // Copyright (c) Z-Coders
-  require 'Lite.php';
-  $config = new Config_Lite('sqlconf.ini');
-  $sqlconf_admin = $config->get('sqlconf-admin');
 ?>
 
 <!DOCTYPE html>
@@ -28,10 +25,10 @@
         			<td width="210px"><label for="MySQLServerHost">mysql Server Host:</label></td>
         			<td><input type="text" name="MySQLServerHost" id="MySQLServerHost" value="localhost"></td>
         		</tr>
-        		<tr>
+        		<!-- <tr>
         			<td width="210px"><label for="MySQLServerPort">mysql Server Port:<br/>(Leave blank if not sure) </label></td>
         			<td><input type="text" name="MySQLServerPort" id="MySQLServerPort" value=""></td>
-        		</tr>
+        		</tr> -->
         		<tr>
         			<td><label for="MySQLUsername">Username:</label></td>
         			<td><input type="text" name="MySQLUsername" id="MySQLUsername" value="" autocomplete="off"></td>
