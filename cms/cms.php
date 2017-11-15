@@ -40,5 +40,25 @@
 
   }
 
+  function generateUniqueId($length = 15) {
+    $sql = new SQL();
+    $table_prefix = $sql->getTeblePrefix();
+    $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    $charactersLength = strlen($characters);
+    $randomString = '';
+    for ($i = 0; $i < $length; $i++) {
+        $randomString .= $characters[rand(0, $charactersLength - 1)];
+    }
+
+    $query = "select * from ".$table_prefix."all_events where id='" . $randomString . "'";
+    $result = $result = $sql->execQuery($query);
+    if (mysqli_num_rows($result) > 0) {
+      generateUniqueUserId();
+    }
+    else {
+      return $randomString;
+    }
+  }
+
 
 ?>

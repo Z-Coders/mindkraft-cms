@@ -8,10 +8,13 @@
   $fee = $_POST['ev_fee'];
   $prize = $_POST['ev_prize'];
   $description = $_POST['ev_description'];
+  $id = generateUniqueId();
   $table_prefix = $sql->getTeblePrefix();
-  $query = "insert into ".$table_prefix."events_list values ('".$name."', '".$dept."', '".$co."', '".$mobile."', '".$fee."', '".$prize."', '".$description."')";
+  $query = "insert into ".$table_prefix."events_list values ('".$name."', '".$dept."', '".$co."', '".$mobile."', '".$fee."', '".$prize."', '".$description."', '".$id."')";
+  $query2 = "insert into ".$table_prefix."all_events values ('".$name."', '".$id."')";
   $result = $sql->execQuery($query);
-  if ($result) {
+  $result2 = $sql->execQuery($query2);
+  if ($result && $result2) {
     echo "Inserted Successfully";
   }
   else {
