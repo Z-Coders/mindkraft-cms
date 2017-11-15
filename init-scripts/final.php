@@ -1,13 +1,20 @@
 <?php
   require 'Lite.php';
+  $sqlconf_file = fopen("sqlconf.ini", "w");
+  $prefix_text =
+"; SQL Configuration file. Automatically generated when init.php is run\n
+; Do not edit or modify this file\n
+; Copyright (C) Z-Coders 2017";
+  fwrite($sqlconf_file, $prefix_text);
+  fclose($sqlconf_file);
   $config = new Config_Lite('sqlconf.ini');
-  $config->set('sqlconf-user', 'sql_hostname', $_POST['MySQLServerHost'])
-         ->set('sqlconf-user', 'sql_username', $_POST['MySQLUsername'])
-         ->set('sqlconf-user', 'sql_password', $_POST['MySQLPassword'])
-         ->set('sqlconf-user', 'sql_database', $_POST['MySQLDatabase'])
-         ->set('sqlconf-user', 'sql_table_prefix', $_POST['MySQLTablePrefix']);
-
-  $config->save();
+  // $config->set('sqlconf-user', 'sql_hostname', $_POST['MySQLServerHost'].'\n')
+  //        ->set('sqlconf-user', 'sql_username', $_POST['MySQLUsername'].'\n')
+  //        ->set('sqlconf-user', 'sql_password', $_POST['MySQLPassword'].'\n')
+  //        ->set('sqlconf-user', 'sql_database', $_POST['MySQLDatabase'].'\n')
+  //        ->set('sqlconf-user', 'sql_table_prefix', $_POST['MySQLTablePrefix'].'\n');
+  //
+  // $config->save();
 
   $user_sql = $config->read('sqlconf.ini')['sqlconf-user'];
   $connection_var = mysqli_connect($user_sql['sql_hostname'], $user_sql['sql_username'], $user_sql['sql_password']);
