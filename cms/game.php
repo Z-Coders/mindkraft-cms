@@ -1,5 +1,10 @@
+<?php
+  session_start();
+  if (!isset($_SESSION['user'])) {
+    header("location:../index.php");
+  }
+?>
 <!DOCTYPE html>
-
 <html>
  <head>
    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
