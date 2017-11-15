@@ -4,19 +4,20 @@
   $prefix_text =
 "; SQL Configuration file. Automatically generated when init.php is run\n
 ; Do not edit or modify this file\n
-; Copyright (C) Z-Coders 2017";
+; Copyright (C) Z-Coders 2017\n";
   fwrite($sqlconf_file, $prefix_text);
-  fclose($sqlconf_file);
-  $config = new Config_Lite('sqlconf.ini');
-  // $config->set('sqlconf-user', 'sql_hostname', $_POST['MySQLServerHost'].'\n')
-  //        ->set('sqlconf-user', 'sql_username', $_POST['MySQLUsername'].'\n')
-  //        ->set('sqlconf-user', 'sql_password', $_POST['MySQLPassword'].'\n')
-  //        ->set('sqlconf-user', 'sql_database', $_POST['MySQLDatabase'].'\n')
-  //        ->set('sqlconf-user', 'sql_table_prefix', $_POST['MySQLTablePrefix'].'\n');
-  //
-  // $config->save();
 
-  $user_sql = $config->read('sqlconf.ini')['sqlconf-user'];
+  fwrite($sqlconf_file, "\n");
+  fwrite($sqlconf_file, "[sqlconf-user]\n");
+  fwrite($sqlconf_file, "sql_hostname = \"".$_POST['MySQLServerHost']."\"\n");
+  fwrite($sqlconf_file, "sql_username = \"".$_POST['MySQLUsername']."\"\n");
+  fwrite($sqlconf_file, "sql_password = \"".$_POST['MySQLPassword']."\"\n");
+  fwrite($sqlconf_file, "sql_database = \"".$_POST['MySQLDatabase']."\"\n");
+  fwrite($sqlconf_file, "sql_table_prefix = \"".$_POST['MySQLTablePrefix']."\"\n");
+
+  fclose($sqlconf_file);
+
+  $user_sql = parse_ini_file('sqlconf.ini', true)['sqlconf-user'];
   $connection_var = mysqli_connect($user_sql['sql_hostname'], $user_sql['sql_username'], $user_sql['sql_password']);
   $table_list = array('enduser_table', 'events_list', 'workshops_list', 'games_list');
   $table_config = array(
