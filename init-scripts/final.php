@@ -21,8 +21,9 @@
 
   $user_sql = parse_ini_file('sqlconf.ini', true)['sqlconf-user'];
   $connection_var = mysqli_connect($user_sql['sql_hostname'], $user_sql['sql_username'], $user_sql['sql_password']);
-  $table_list = array('enduser_table', 'events_list', 'workshops_list', 'games_list');
+  $table_list = array('cpanel_users', 'enduser_table', 'events_list', 'workshops_list', 'games_list');
   $table_config = array(
+                  "username varchar(50), password varchar(50)",
                   "name varchar(50), mobile varchar(15), email varchar(50), college varchar(100), password varchar(50), userid varchar(20)",
                   "event_name varchar(50), department varchar(50), event_incharge varchar(50), incharge_contact varchar(50), event_fee varchar(10), event_prize varchar(20), description mediumtext",
                   "event_name varchar(50), event_incharge varchar(50), incharge_contact varchar(50), event_fee varchar(10), event_prize varchar(20), description text",
@@ -38,7 +39,7 @@
     return;
   }
   $connection_var = mysqli_connect($user_sql['sql_hostname'], $user_sql['sql_username'], $user_sql['sql_password'], $user_sql['sql_database']);
-  for ($i=0; $i < 4; $i++) {
+  for ($i=0; $i < count($table_list); $i++) {
     $query = "create table " . $user_sql['sql_table_prefix'].$table_list[$i] . "(" . $table_config[$i] . ")";
     $result = mysqli_query($connection_var, $query);
     if ($result) {
