@@ -6,12 +6,21 @@
    */
   class SQL
   {
-    $sqlconf = parse_ini_file("sqlconf.ini", true)['sqlconf-user'];
-    protected $hostname = $sqlconf['sql_hostname'];
-    protected $sql_username = $sqlconf['sql_hostname'];
-    protected $sql_password = $sqlconf['sql_hostname'];
-    protected $database = $sqlconf['sql_hostname'];
-    protected $table_prefix = $sqlconf['sql_table_prefix'];
+    protected $sqlconf;
+    protected $hostname;
+    protected $sql_username;
+    protected $sql_password;
+    protected $database;
+    protected $table_prefix;
+    public function __construct()
+    {
+      $this->sqlconf = parse_ini_file("sqlconf.ini", true)['sqlconf-user'];
+      $this->hostname = $this->sqlconf['sql_hostname'];
+      $this->sql_username = $this->sqlconf['sql_hostname'];
+      $this->sql_password = $this->sqlconf['sql_hostname'];
+      $this->database = $this->sqlconf['sql_hostname'];
+      $this->table_prefix = $this->sqlconf['sql_table_prefix'];
+    }
 
     protected function newConnection()
     {
