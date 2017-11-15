@@ -1,5 +1,5 @@
 <?php
-  require 'Lite.php';
+
   $sqlconf_file = fopen("sqlconf.ini", "w");
   $prefix_text =
 "; SQL Configuration file. Automatically generated when init.php is run\n
@@ -16,6 +16,8 @@
   fwrite($sqlconf_file, "sql_table_prefix = \"".$_POST['MySQLTablePrefix']."\"\n");
 
   fclose($sqlconf_file);
+
+  copy("sqlconf.ini", "../cms/sqlconf.ini");
 
   $user_sql = parse_ini_file('sqlconf.ini', true)['sqlconf-user'];
   $connection_var = mysqli_connect($user_sql['sql_hostname'], $user_sql['sql_username'], $user_sql['sql_password']);

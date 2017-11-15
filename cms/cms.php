@@ -6,10 +6,12 @@
    */
   class SQL
   {
-    protected $hostname = "localhost";
-    protected $sql_username = "root";
-    protected $sql_password = "";
-    protected $database = "site_db";
+    $sqlconf = parse_ini_file("sqlconf.ini", true)['sqlconf-user'];
+    protected $hostname = $sqlconf['sql_hostname'];
+    protected $sql_username = $sqlconf['sql_hostname'];
+    protected $sql_password = $sqlconf['sql_hostname'];
+    protected $database = $sqlconf['sql_hostname'];
+    protected $table_prefix = $sqlconf['sql_table_prefix'];
 
     protected function newConnection()
     {
