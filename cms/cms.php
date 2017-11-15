@@ -16,9 +16,9 @@
     {
       $this->sqlconf = parse_ini_file("sqlconf.ini", true)['sqlconf-user'];
       $this->hostname = $this->sqlconf['sql_hostname'];
-      $this->sql_username = $this->sqlconf['sql_hostname'];
-      $this->sql_password = $this->sqlconf['sql_hostname'];
-      $this->database = $this->sqlconf['sql_hostname'];
+      $this->sql_username = $this->sqlconf['sql_username'];
+      $this->sql_password = $this->sqlconf['sql_password'];
+      $this->database = $this->sqlconf['sql_database'];
       $this->table_prefix = $this->sqlconf['sql_table_prefix'];
     }
 
