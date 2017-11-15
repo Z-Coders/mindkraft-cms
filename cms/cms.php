@@ -1,9 +1,10 @@
 <?php
 
   /**
-   *
+   *  Main CMS script.
+   *  Copyright (C) Z-Coders 2017
    */
-  class sqlConf
+  class SQL
   {
     protected $hostname = "localhost";
     protected $sql_username = "root";

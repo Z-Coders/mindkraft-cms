@@ -20,12 +20,12 @@
             <form class="form-inline" action="cms/authenticate.php" id="login-form" method="post">
               <div class="form-group">
                 <label for="email" id="user">Username :</label>
-                <input type="text" class="form-control" id="email" placeholder="Your ID here." required>
+                <input type="text" class="form-control" id="email" name="user" placeholder="Your ID here." required>
                 </div>
                 <p></p>
                 <div class="form-group">
                 <label for="password" id="pass">Password :</label>
-                <input type="password" class="form-control" id="password" placeholder="Your password here." required>
+                <input type="password" class="form-control" id="password" name="password" placeholder="Your password here." required>
               </div>
             </form>
             <hr class="m-y-md">
