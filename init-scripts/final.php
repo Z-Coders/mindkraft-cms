@@ -27,7 +27,7 @@
                   "name varchar(50), mobile varchar(15), email varchar(50), college varchar(100), password varchar(50), userid varchar(20)",
                   "event_name varchar(50), department varchar(50), event_incharge varchar(50), incharge_contact varchar(50), event_fee varchar(10), event_prize varchar(20), description mediumtext, event_id varchar(20)",
                   "event_name varchar(50), event_incharge varchar(50), incharge_contact varchar(50), event_fee varchar(10), event_prize varchar(20), description text, event_id varchar(20)",
-                  "event_name varchar(50), event_incharge varchar(50), incharge_contact varchar(50), event_fee varchar(10), event_prize varchar(20), description text, event_id varchar(20)",
+                  "event_name varchar(50), event_incharge varchar(50), incharge_contact varchar(50), event_fee varchar(10), description text, event_id varchar(20)",
                   "event_name varchar(50), id varchar(20)"
                 );
   $query = "create database " . $user_sql['sql_database'];
