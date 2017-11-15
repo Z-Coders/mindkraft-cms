@@ -24,6 +24,11 @@
       return $result;
     }
 
+    public function getTeblePrefix()
+    {
+      return $this->table_prefix;
+    }
+
   }
 
 
