@@ -40,7 +40,7 @@
 
   }
 
-  function generateUniqueId($length = 15) {
+  function generateUniqueId($length = 16) {
     $sql = new SQL();
     $table_prefix = $sql->getTeblePrefix();
     $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
