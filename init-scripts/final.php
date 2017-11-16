@@ -28,7 +28,7 @@
                   "userid varchar(32) not null unique, mobile varchar(16) not null unique, name varchar(64) not null, email varchar(64) not null unique, college varchar(128), password varbinary(512) not null",
                   "event_name varchar(64), event_id varchar(32) not null unique, event_type varchar(32), department varchar(64), event_incharge varchar(128), incharge_contact varchar(128), event_fee varchar(16), event_prize varchar(16), description mediumtext",
                   "event_name varchar(64), event_id varchar(32) not null unique, department varchar(64), event_incharge varchar(128), incharge_contact varchar(128), event_fee varchar(16), event_prize varchar(16), description mediumtext",
-                  "event_name varchar(64), event_id varchar(32) not null unique, department varchar(64), event_incharge varchar(128), incharge_contact varchar(128), event_fee varchar(16), event_prize varchar(16), description mediumtext",
+                  "event_name varchar(64), event_id varchar(32) not null unique, department varchar(64), event_incharge varchar(128), incharge_contact varchar(128), event_fee varchar(16), description mediumtext",
                   "event_name varchar(64), event_id varchar(32) not null unique, event_type varchar(32), category varchar(32), department varchar(64), event_incharge varchar(128), incharge_contact varchar(128), event_fee varchar(16), event_prize varchar(16), description mediumtext"
                 );
 
