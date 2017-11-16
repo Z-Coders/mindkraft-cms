@@ -72,15 +72,18 @@
               <select class="select" name="wr_department">
                 <option value="ae" selected>Aerospace</option>
                 <option value="bt">Bio Technology</option>
+                <option value="bi">Bio Informatics</option>
                 <option value="ce">Civil</option>
                 <option value="cse">Computer Science</option>
                 <option value="ece">ECE</option>
                 <option value="eee">EEE</option>
                 <option value="eie">EIE</option>
+                <option value="eng">Department of English</option>
                 <option value="fp">Food Processing</option>
-                <option value="nano">Nanotechnology</option>
+                <option value="kubs">KUBS</option>
                 <option value="me">Mechanical</option>
-                <option value="mt">EMT</option>
+                <option value="emt">EMT</option>
+                <option value="nano">Nano Technology</option>
               </select>
             </div>
           </div>
