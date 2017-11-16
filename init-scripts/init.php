@@ -45,6 +45,10 @@
         			<td><label for="MySQLTablePrefix">Table Prefix:</label></td>
         			<td><input type="text" name="MySQLTablePrefix" id="MySQLTablePrefix" value="mindkraft18_"></td>
         		</tr>
+            <tr>
+              <td><label for="MySQLViewPrefix">View Prefix:</label></td>
+              <td><input type="text" name="MySQLViewPrefix" id="MySQLViewPrefix" value="base_view_"></td>
+            </tr>
         	</table>
         </fieldset>
         <br><br>

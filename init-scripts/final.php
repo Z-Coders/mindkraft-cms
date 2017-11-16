@@ -14,6 +14,7 @@
   fwrite($sqlconf_file, "sql_password = \"".$_POST['MySQLPassword']."\"\n");
   fwrite($sqlconf_file, "sql_database = \"".$_POST['MySQLDatabase']."\"\n");
   fwrite($sqlconf_file, "sql_table_prefix = \"".$_POST['MySQLTablePrefix']."\"\n");
+  fwrite($sqlconf_file, "sql_view_prefix = \"".$_POST['MySQLViewPrefix']."\"\n");
 
   fclose($sqlconf_file);
 
@@ -58,10 +59,10 @@
   }
 
   foreach ($table_list as $table) {
-    $query = "create view base_view_".$table." as select * from ".$user_sql['sql_table_prefix'].$table;
+    $query = "create view ".$user_sql['sql_view_prefix'].$table." as select * from ".$user_sql['sql_table_prefix'].$table;
     $result = mysqli_query($connection_var, $query);
     if ($result) {
-      echo "Created view for ".$user_sql['sql_table_prefix'].$table." as base_view_".$table."<br>";
+      echo "Created view for ".$user_sql['sql_table_prefix'].$table." as ".$user_sql['sql_view_prefix'].$table."<br>";
     }
     else {
       echo "Error creating view...<br>Quitting!";
