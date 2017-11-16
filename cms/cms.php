@@ -50,8 +50,8 @@
         $randomString .= $characters[rand(0, $charactersLength - 1)];
     }
 
-    $query = "select * from ".$table_prefix."all_events where id='" . $randomString . "'";
-    $result = $result = $sql->execQuery($query);
+    $query = "select * from ".$table_prefix."all_events where event_id='" . $randomString . "'";
+    $result = $sql->execQuery($query);
     if (mysqli_num_rows($result) > 0) {
       generateUniqueUserId();
     }
