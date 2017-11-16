@@ -1,0 +1,5 @@
+# .htaccess file for mindkraft-cms. Do not edit or modify
+# Copyright (c) Z-Coders 2017
+
+RewriteEngine on
+RewriteRule \.ini$ - [R=404]
