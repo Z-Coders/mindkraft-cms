@@ -21,17 +21,19 @@
 
   $user_sql = parse_ini_file('sqlconf.ini', true)['sqlconf-user'];
   $connection_var = mysqli_connect($user_sql['sql_hostname'], $user_sql['sql_username'], $user_sql['sql_password']);
-  $table_list = array('cpanel_users', 'enduser_table', 'events_list', 'workshops_list', 'games_list', 'all_events');
+  $table_list = array('cpanel_users', 'enduser_table', 'events_list', 'games_list', 'workshops_list', 'all_events');
   $table_config = array(
-                  "username varchar(50), password varchar(50)",
-                  "name varchar(50), mobile varchar(15), email varchar(50), college varchar(100), password varchar(50), userid varchar(20)",
-                  "event_name varchar(50), department varchar(50), event_incharge varchar(50), incharge_contact varchar(50), event_fee varchar(10), event_prize varchar(20), description mediumtext, event_id varchar(20)",
-                  "event_name varchar(50), event_incharge varchar(50), incharge_contact varchar(50), event_fee varchar(10), description text, event_id varchar(20)",
-                  "event_name varchar(50), event_incharge varchar(50), incharge_contact varchar(50), event_fee varchar(10), event_prize varchar(20), description text, event_id varchar(20)",
-                  "event_name varchar(50), id varchar(20)"
+                  "username varchar(64), password varbinary(512)",
+                  "userid varchar(32) not null unique, mobile varchar(16) not null unique, name varchar(64) not null, email varchar(64) not null unique, college varchar(128), password varbinary(512) not null",
+                  "event_name varchar(64), event_id varchar(32) not null unique, event_type varchar(32), department varchar(64), event_incharge varchar(128), incharge_contact varchar(128), event_fee varchar(16), event_prize varchar(16), description mediumtext",
+                  "event_name varchar(64), event_id varchar(32) not null unique, department varchar(64), event_incharge varchar(128), incharge_contact varchar(128), event_fee varchar(16), event_prize varchar(16), description mediumtext",
+                  "event_name varchar(64), event_id varchar(32) not null unique, department varchar(64), event_incharge varchar(128), incharge_contact varchar(128), event_fee varchar(16), event_prize varchar(16), description mediumtext",
+                  "event_name varchar(64), event_id varchar(32) not null unique, event_type varchar(32), category varchar(32), department varchar(64), event_incharge varchar(128), incharge_contact varchar(128), event_fee varchar(16), event_prize varchar(16), description mediumtext"
                 );
+
   $query = "create database " . $user_sql['sql_database'];
   $result = mysqli_query($connection_var, $query);
+
   if ($result) {
     echo "Successfully created the database <br>";
   }
@@ -39,7 +41,10 @@
     echo "Error creating the database <br> Quitting!";
     return;
   }
+
   $connection_var = mysqli_connect($user_sql['sql_hostname'], $user_sql['sql_username'], $user_sql['sql_password'], $user_sql['sql_database']);
+
+  echo "Creating tables...<br>";
   for ($i=0; $i < count($table_list); $i++) {
     $query = "create table " . $user_sql['sql_table_prefix'].$table_list[$i] . "(" . $table_config[$i] . ")";
     $result = mysqli_query($connection_var, $query);
@@ -51,4 +56,17 @@
       break;
     }
   }
+
+  foreach ($table_list as $table) {
+    $query = "create view base_view_".$table." as select * from ".$user_sql['sql_table_prefix'].$table;
+    $result = mysqli_query($connection_var, $query);
+    if ($result) {
+      echo "Created view for ".$user_sql['sql_table_prefix'].$table." as base_view_".$table."<br>";
+    }
+    else {
+      echo "Error creating view...<br>Quitting!";
+      break;
+    }
+  }
+
 ?>
