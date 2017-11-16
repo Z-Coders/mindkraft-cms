@@ -66,6 +66,26 @@
           <input type="text" name="wr_name" class="input" value="" required>
         </p>
         <p class="ip-group">
+          <label class="label">Department</label>
+          <div class="control">
+            <div class="select">
+              <select class="select" name="wr_department">
+                <option value="ae" selected>Aerospace</option>
+                <option value="bt">Bio Technology</option>
+                <option value="ce">Civil</option>
+                <option value="cse">Computer Science</option>
+                <option value="ece">ECE</option>
+                <option value="eee">EEE</option>
+                <option value="eie">EIE</option>
+                <option value="fp">Food Processing</option>
+                <option value="nano">Nanotechnology</option>
+                <option value="me">Mechanical</option>
+                <option value="mt">EMT</option>
+              </select>
+            </div>
+          </div>
+        </p>
+        <p class="ip-group">
           <label class="label">Workshop Co-Ordinator</label>
           <input type="text" name="wr_incharge" class="input" value="" required>
         </p>

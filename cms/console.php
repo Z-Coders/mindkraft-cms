@@ -66,10 +66,21 @@
           <input type="text" name="ev_name" class="input" value="" required>
         </p>
         <p class="ip-group">
+          <label class="label">Event Type</label>
+          <div class="control">
+            <div class="select">
+              <select class="select" name="ev_type">
+                <option value="tech" selected>Technical</option>
+                <option value="nontech">Non Technical</option>
+              </select>
+            </div>
+          </div>
+        </p>
+        <p class="ip-group">
           <label class="label">Department</label>
           <div class="control">
             <div class="select">
-              <select class="select" name="department">
+              <select class="select" name="ev_department">
                 <option value="ae" selected>Aerospace</option>
                 <option value="bt">Bio Technology</option>
                 <option value="ce">Civil</option>

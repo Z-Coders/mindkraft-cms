@@ -2,14 +2,18 @@
   require 'cms.php';
   $sql = new SQL();
   $name = $_POST['wr_name'];
+  $id = generateUniqueId();
+  $type = "";
+  $category = "workshop";
+  $dept = $_POST['wr_department'];
   $co = $_POST['wr_incharge'];
   $mobile = $_POST['incharge_con'];
   $fee = $_POST['wr_fee'];
+  $prize = "";
   $description = $_POST['wr_description'];
-  $id = generateUniqueId();
   $table_prefix = $sql->getTeblePrefix();
-  $query = "insert into ".$table_prefix."workshops_list values ('".$name."', '".$co."', '".$mobile."', '".$fee."', '".$description."', '".$id."')";
-  $query2 = "insert into ".$table_prefix."all_events values ('".$name."', '".$id."')";
+  $query = "insert into ".$table_prefix."workshops_list values ('".$name."', '".$id."', '".$dept."', '".$co."', '".$mobile."', '".$fee."', '".$description."')";
+  $query2 = "insert into ".$table_prefix."all_events values ('".$name."', '".$id."', '".$type."', '".$category."', '".$dept."', '".$co."', '".$mobile."', '".$fee."', '".$prize."', '".$description."')";
   $result = $sql->execQuery($query);
   $result2 = $sql->execQuery($query2);
 ?>
