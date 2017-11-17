@@ -1,5 +1,5 @@
 <?php
-  // MindKraft CMS v0.1
+  // MindKraft CMS v0.2
   // Copyright (c) 2017 Z-Coders
 ?>
 
