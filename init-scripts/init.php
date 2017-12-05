@@ -17,9 +17,9 @@
       <div id="header">
         <h1 id="heading">MindKraft CMS Initializer</h1>
       </div>
-      <form class="" action="final.php" method="post">
+      <form class="" action="setupTables.php" method="post">
         <fieldset name="DatabaseSettings">
-        	<legend>Database Settings (Create New User) </legend>
+        	<legend>Database Settings</legend>
         	<table border="0" width="580px">
         		<tr>
         			<td width="210px"><label for="MySQLServerHost">mysql Server Host:</label></td>
