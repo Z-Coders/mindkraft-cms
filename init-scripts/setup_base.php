@@ -65,7 +65,7 @@
       echo "Created view for ".$root_sql['sql_table_prefix'].$table." as ".$root_sql['sql_view_prefix'].$table."<br>";
     }
     else {
-      echo "Error creating view...<br>Quitting!";
+      echo "Error creating view for ".$root_sql['sql_table_prefix'].$table."...<br>Quitting!";
       return;
     }
   }
