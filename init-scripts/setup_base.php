@@ -26,7 +26,7 @@
   $t_struct = array(
     'cpanel_users' => 'cpanel_username varchar(64), user_password varbinary(512)',
     'enduser_table' => 'userid varchar(32) not null unique, enduser_mobile varchar(16) not null unique, enduser_name varchar(64) not null, enduser_email varchar(64) not null unique, enduser_college_name varchar(128), enduser_password varbinary(512) not null',
-    'envents_list' => 'event_name varchar(64), event_id varchar(32) not null unique, event_type varchar(32), event_department varchar(64), event_incharge varchar(128), incharge_contact varchar(128), event_fee varchar(16), event_prize varchar(16), event_description mediumtext',
+    'events_list' => 'event_name varchar(64), event_id varchar(32) not null unique, event_type varchar(32), event_department varchar(64), event_incharge varchar(128), incharge_contact varchar(128), event_fee varchar(16), event_prize varchar(16), event_description mediumtext',
     'games_list' => 'event_name varchar(64), event_id varchar(32) not null unique, event_incharge varchar(128), incharge_contact varchar(128), event_fee varchar(16), event_prize varchar(16), event_description mediumtext',
     'workshops_list' => 'event_name varchar(64), event_id varchar(32) not null unique, event_department varchar(64), event_incharge varchar(128), incharge_contact varchar(128), event_fee varchar(16), event_description mediumtext',
     'all_events' => 'event_name varchar(64), event_id varchar(32) not null unique, event_type varchar(32), category varchar(32), event_department varchar(64), event_incharge varchar(128), incharge_contact varchar(128), event_fee varchar(16), event_prize varchar(16), event_description mediumtext',
