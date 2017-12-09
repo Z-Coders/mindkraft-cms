@@ -17,7 +17,7 @@
       <div id="header">
         <h1 id="heading">MindKraft CMS Initializer</h1>
       </div>
-      <form class="" action="setupTables.php" method="post">
+      <form class="" id="form">
         <fieldset name="DatabaseSettings">
         	<legend>Database Settings</legend>
         	<table border="0" width="580px">
@@ -52,9 +52,30 @@
         	</table>
         </fieldset>
         <br><br>
-        <input type="submit" name="" value="Continue">
+        <input type="button" id="button" name="" value="Continue">
       </form>
     </div>
+
+    <div class="">
+      <p id="output"></p>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function () {
+        $('#button').click(function () {
+          var formData = $('#form').serializeArray();
+          $.ajax({
+            url: "setup_base.php",
+            data: formData,
+            type: 'POST',
+            success: function (result, status, xhr) {
+              $('#output').append(result);
+            }
+          });
+        });
+      });
+    </script>
 
   </body>
 </html>
