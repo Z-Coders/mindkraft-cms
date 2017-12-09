@@ -26,7 +26,7 @@
 
   $pdo = new PDO($dsn, $username, $password, $options);
 
-  $query = "GRANT ALL PRIVILEGES ON $database.* to $adminuser@'%' IDENTIFIED BY '$adminpass'; GRANT SELECT, INSERT, UPDATE ON $database.* to $clientuser@'%' IDENTIFIED BY '$clientpass';";
+  $query = "GRANT ALL PRIVILEGES ON $database.* to $adminuser@'$hostname' IDENTIFIED BY '$adminpass'; GRANT SELECT, INSERT, UPDATE ON $database.* to $clientuser@'$hostname' IDENTIFIED BY '$clientpass';";
 
   $stmt = $pdo->prepare($query);
 
