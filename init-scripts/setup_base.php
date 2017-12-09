@@ -13,6 +13,7 @@
   fwrite($sqlconf_file, "sql_username = \"".$_POST['MySQLUsername']."\"\n");
   fwrite($sqlconf_file, "sql_password = \"".$_POST['MySQLPassword']."\"\n");
   fwrite($sqlconf_file, "sql_database = \"".$_POST['MySQLDatabase']."\"\n");
+  fwrite($sqlconf_file, "\n\n[sqlconf-prefixes]\n");
   fwrite($sqlconf_file, "sql_table_prefix = \"".$_POST['MySQLTablePrefix']."\"\n");
   fwrite($sqlconf_file, "sql_view_prefix = \"".$_POST['MySQLViewPrefix']."\"\n");
 
@@ -21,13 +22,14 @@
   copy("sqlconf.ini", "../cms/sqlconf.ini");
 
   $root_sql = parse_ini_file('sqlconf.ini', true)['sqlconf-root'];
+  $prefixes = parse_ini_file('sqlconf.ini', true)['sqlconf-prefixes'];
 
   $hostname = $root_sql['sql_hostname'];
   $username = $root_sql['sql_username'];
   $password = $root_sql['sql_password'];
   $database = $root_sql['sql_database'];
-  $table_prefix = $root_sql['sql_table_prefix'];
-  $view_prefix = $root_sql['sql_view_prefix'];
+  $table_prefix = $prefixes['sql_table_prefix'];
+  $view_prefix = $prefixes['sql_view_prefix'];
 
   $connection_var = mysqli_connect($hostname, $username, $password);
 
