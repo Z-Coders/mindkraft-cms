@@ -120,23 +120,23 @@
 
   echo "Creating tables...<br>";
   foreach ($t_struct as $t_name => $t_config) {
-    $stmt = $pdo->prepare("create table " . $root_sql['sql_table_prefix'].$t_name . "(" . $t_config . ")");
+    $stmt = $pdo->prepare("create table " . $table_prefix.$t_name . "(" . $t_config . ")");
     if ($stmt->execute()) {
-      echo "Created table " . $root_sql['sql_table_prefix'].$t_name . "<br>";
+      echo "Created table " . $table_prefix.$t_name . "<br>";
     }
     else {
-      echo "Error creating table " . $root_sql['sql_table_prefix'].$t_name . "<br>" . "Quitting!";
+      echo "Error creating table " . $table_prefix.$t_name . "<br>" . "Quitting!";
       return;
     }
   }
 
   foreach ($t_list as $table) {
-    $stmt = $pdo->prepare("create view ".$root_sql['sql_view_prefix'].$table." as select * from ".$root_sql['sql_table_prefix'].$table);
+    $stmt = $pdo->prepare("create view ".$view_prefix.$table." as select * from ".$table_prefix.$table);
     if ($stmt->execute()) {
-      echo "Created view for ".$root_sql['sql_table_prefix'].$table." as ".$root_sql['sql_view_prefix'].$table."<br>";
+      echo "Created view for ".$table_prefix.$table." as ".$view_prefix.$table."<br>";
     }
     else {
-      echo "Error creating view for ".$root_sql['sql_table_prefix'].$table."...<br>Quitting!";
+      echo "Error creating view for ".$table_prefix.$table."...<br>Quitting!";
       return;
     }
   }
