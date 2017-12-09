@@ -14,11 +14,15 @@
     protected $table_prefix;
     public function __construct()
     {
-      $this->sqlconf = parse_ini_file("sqlconf.ini", true)['sqlconf-user'];
+      $this->sqlconf = parse_ini_file("sqlconf.ini", true)['sqlconf-root'];
       $this->hostname = $this->sqlconf['sql_hostname'];
+      $this->database = $this->sqlconf['sql_database'];
+
+      $this->sqlconf = parse_ini_file("sqlconf.ini", true)['sqlconf-cpanel'];
       $this->sql_username = $this->sqlconf['sql_username'];
       $this->sql_password = $this->sqlconf['sql_password'];
-      $this->database = $this->sqlconf['sql_database'];
+
+      $this->sqlconf = parse_ini_file("sqlconf.ini", true)['sqlconf-prefixes'];
       $this->table_prefix = $this->sqlconf['sql_table_prefix'];
     }
 
