@@ -1,4 +1,5 @@
 <?php
+
   $sqlconf_file = fopen("sqlconf.ini", "w");
   $prefix_text =
 "; SQL Configuration file. Automatically generated when init.php is run\n
@@ -20,7 +21,28 @@
   copy("sqlconf.ini", "../cms/sqlconf.ini");
 
   $root_sql = parse_ini_file('sqlconf.ini', true)['sqlconf-root'];
-  $connection_var = mysqli_connect($root_sql['sql_hostname'], $root_sql['sql_username'], $root_sql['sql_password']);
+
+  $hostname = $root_sql['sql_hostname'];
+  $username = $root_sql['sql_username'];
+  $password = $root_sql['sql_password'];
+  $database = $root_sql['sql_database'];
+  $table_prefix = $root_sql['sql_table_prefix'];
+  $view_prefix = $root_sql['sql_view_prefix'];
+
+  $connection_var = mysqli_connect($hostname, $username, $password);
+
+  // Create database first
+  $query = "create database " . $database;
+  $result = mysqli_query($connection_var, $query);
+
+  if ($result) {
+    echo "Successfully created the database <br>";
+  }
+  else {
+    echo "Error creating the database <br> Quitting!";
+    return;
+  }
+
 
   // Master tables list. Add table here and then define in t_struct (please maintain the same order)
   $t_list = array('cpanel_users', 'enduser_table', 'events_list', 'games_list', 'workshops_list', 'all_events');
@@ -89,25 +111,23 @@
     'all_events' => 'event_name varchar(64), event_id varchar(32) not null unique, event_type varchar(32), category varchar(32), event_department varchar(64), event_incharge varchar(128), incharge_contact varchar(128), event_fee varchar(16), event_prize varchar(16), event_description mediumtext',
   );
 
-  // Create database first
-  $query = "create database " . $root_sql['sql_database'];
-  $result = mysqli_query($connection_var, $query);
 
-  if ($result) {
-    echo "Successfully created the database <br>";
-  }
-  else {
-    echo "Error creating the database <br> Quitting!";
-    return;
-  }
+  // Create PDO object
 
-  $connection_var = mysqli_connect($root_sql['sql_hostname'], $root_sql['sql_username'], $root_sql['sql_password'], $root_sql['sql_database']);
+  $dsn = "mysql:host=$hostname;dbname=$database;charset=utf8mb4";
+
+  $options = [
+    PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
+    PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+    PDO::ATTR_EMULATE_PREPARES   => false,
+  ];
+
+  $pdo = new PDO($dsn, $username, $password, $options);
 
   echo "Creating tables...<br>";
   foreach ($t_struct as $t_name => $t_config) {
-    $query = "create table " . $root_sql['sql_table_prefix'].$t_name . "(" . $t_config . ")";
-    $result = mysqli_query($connection_var, $query);
-    if ($result) {
+    $stmt = $pdo->prepare("create table " . $root_sql['sql_table_prefix'].$t_name . "(" . $t_config . ")");
+    if ($stmt->execute()) {
       echo "Created table " . $root_sql['sql_table_prefix'].$t_name . "<br>";
     }
     else {
@@ -117,9 +137,8 @@
   }
 
   foreach ($t_list as $table) {
-    $query = "create view ".$root_sql['sql_view_prefix'].$table." as select * from ".$root_sql['sql_table_prefix'].$table;
-    $result = mysqli_query($connection_var, $query);
-    if ($result) {
+    $stmt = $pdo->prepare("create view ".$root_sql['sql_view_prefix'].$table." as select * from ".$root_sql['sql_table_prefix'].$table);
+    if ($stmt->execute()) {
       echo "Created view for ".$root_sql['sql_table_prefix'].$table." as ".$root_sql['sql_view_prefix'].$table."<br>";
     }
     else {
