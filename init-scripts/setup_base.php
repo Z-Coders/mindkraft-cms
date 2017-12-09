@@ -1,13 +1,7 @@
 <?php
 
   $sqlconf_file = fopen("sqlconf.ini", "w");
-  $prefix_text =
-"; SQL Configuration file. Automatically generated when init.php is run\n
-; Do not edit or modify this file\n
-; Copyright (C) Z-Coders 2017\n";
-  fwrite($sqlconf_file, $prefix_text);
 
-  fwrite($sqlconf_file, "\n");
   fwrite($sqlconf_file, "[sqlconf-root]\n");
   fwrite($sqlconf_file, "sql_hostname = \"".$_POST['MySQLServerHost']."\"\n");
   fwrite($sqlconf_file, "sql_username = \"".$_POST['MySQLUsername']."\"\n");
@@ -18,8 +12,6 @@
   fwrite($sqlconf_file, "sql_view_prefix = \"".$_POST['MySQLViewPrefix']."\"\n");
 
   fclose($sqlconf_file);
-
-  copy("sqlconf.ini", "../cms/sqlconf.ini");
 
   $root_sql = parse_ini_file('sqlconf.ini', true)['sqlconf-root'];
   $prefixes = parse_ini_file('sqlconf.ini', true)['sqlconf-prefixes'];
