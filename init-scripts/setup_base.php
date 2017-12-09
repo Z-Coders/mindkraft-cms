@@ -147,6 +147,6 @@
     }
   }
 
-  echo "<a href=\"create_users.php\">Go Ahead</a>";
+  echo "<a href=\"createusers.php\">Go Ahead</a>";
 
 ?>
