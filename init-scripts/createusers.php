@@ -3,6 +3,7 @@
   // Copyright (c) Z-Coders
 
   $root_sql = parse_ini_file('sqlconf.ini', true)['sqlconf-root'];
+  $prefixes = parse_ini_file('sqlconf.ini', true)['sqlconf-prefixes'];
   $connection_var = mysqli_connect($root_sql['sql_hostname'], $root_sql['sql_username'], $root_sql['sql_password'], $root_sql['sql_database']);
 ?>
 
@@ -34,11 +35,11 @@
         		</tr>
         		<tr>
         			<td><label for="MySQLTablePrefix">Table Prefix:</label></td>
-        			<td><input type="text" value="<?php echo $root_sql['sql_table_prefix']?>" disabled></td>
+        			<td><input type="text" value="<?php echo $prefixes['sql_table_prefix']?>" disabled></td>
         		</tr>
             <tr>
               <td><label for="MySQLViewPrefix">View Prefix:</label></td>
-              <td><input type="text" value="<?php echo $root_sql['sql_view_prefix']?>" disabled></td>
+              <td><input type="text" value="<?php echo $prefixes['sql_view_prefix']?>" disabled></td>
             </tr>
         	</table>
         </fieldset>
