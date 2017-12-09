@@ -36,11 +36,11 @@
 
     fwrite($sqlconf_file, $prefix_text);
 
-    fwrite($sqlconf_file, "[sqlconf-root]\n");
+    fwrite($sqlconf_file, "\n[sqlconf-root]\n");
     fwrite($sqlconf_file, "sql_hostname = \"".$hostname."\"\n");
     fwrite($sqlconf_file, "sql_database = \"".$database."\"\n");
 
-    fwrite($sqlconf_file, "\n[sqlconf-cpanel]\n");
+    fwrite($sqlconf_file, "\n\n[sqlconf-cpanel]\n");
     fwrite($sqlconf_file, "sql_username = \"".$adminuser."\"\n");
     fwrite($sqlconf_file, "sql_password = \"".$adminpass."\"\n");
 
