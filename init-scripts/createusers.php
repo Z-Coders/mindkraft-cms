@@ -4,7 +4,6 @@
 
   $root_sql = parse_ini_file('sqlconf.ini', true)['sqlconf-root'];
   $prefixes = parse_ini_file('sqlconf.ini', true)['sqlconf-prefixes'];
-  $connection_var = mysqli_connect($root_sql['sql_hostname'], $root_sql['sql_username'], $root_sql['sql_password'], $root_sql['sql_database']);
 ?>
 
 <!DOCTYPE html>
