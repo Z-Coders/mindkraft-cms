@@ -20,7 +20,7 @@
       <div id="header">
         <h1 id="heading">Create User Group</h1>
       </div>
-      <form class="" action="createUsers.php" method="post">
+      <form class="" action="create_users.php" method="post">
         <fieldset name="DatabaseSettings">
         	<legend>Database Connection Settings</legend>
         	<table border="0" width="580px">
