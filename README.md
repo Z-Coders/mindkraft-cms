@@ -1,4 +1,4 @@
-# MindKraft CMS
+# MindKraft CMS (Deprecated)
 
 Content Management System for MindKraft
 
@@ -14,3 +14,5 @@ Content Management System for MindKraft
   - Version >= 0.2 - [Z - Coders](https://github.com/Z-Coders)
 
   Licensed under `The Apache License`
+
+**Note** - As of 14/01/2018, this repository is deprecated and the newer codebase has been moved to a private repository [here](https://bitbucket.org/z_coders/)
