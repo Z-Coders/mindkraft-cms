@@ -15,4 +15,4 @@ Content Management System for MindKraft
 
   Licensed under `The Apache License`
 
-**Note** - As of 14/01/2018, this repository is deprecated and the newer codebase has been moved to a private repository [here](https://bitbucket.org/z_coders/)
+**Note** - As of 14/01/2018, this repository is deprecated and the newer codebase has been moved to a private repository [here](https://bitbucket.org/account/user/z_coders/projects/MK)
